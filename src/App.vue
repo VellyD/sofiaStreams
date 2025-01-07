@@ -8,6 +8,8 @@
     <v-main>
       <router-view />
     </v-main>
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </v-app>
 </template>
+
+<style scoped></style>

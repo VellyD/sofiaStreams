@@ -1,17 +1,41 @@
 <script>
-  //
+  export default {
+    data() {
+      return {
+        firstName: "",
+        rules: [
+          (value) => {
+            if (value) return true;
+
+            return "You must enter a first name.";
+          },
+        ],
+      };
+    },
+  };
 </script>
 
 <template>
-  <v-btn
-    rounded="xl"
-    color="primary"
-    size="x-large"
-    block
-    variant="outlined"
+  <v-sheet
+    class="mx-auto"
+    width="300"
   >
-    Save
-  </v-btn>
+    <v-form @submit.prevent>
+      <v-text-field
+        v-model="firstName"
+        :rules="rules"
+        label="First name"
+      ></v-text-field>
+      <v-btn
+        class="mt-2"
+        type="submit"
+        block
+        color="secondary"
+      >
+        Submit
+      </v-btn>
+    </v-form>
+  </v-sheet>
 </template>
 
 <style></style>
