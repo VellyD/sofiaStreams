@@ -5,7 +5,7 @@
 <template>
   <v-btn
     rounded="xl"
-    bg-color="red"
+    color="primary"
     size="x-large"
     block
     variant="outlined"
