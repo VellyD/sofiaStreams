@@ -48,6 +48,6 @@
 
 <style scoped>
   .text {
-    color: #4e4e4e;
+    color: #2d3e50;
   }
 </style>

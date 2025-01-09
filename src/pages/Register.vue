@@ -50,7 +50,7 @@
       elevation="3"
       style="width: 400px"
     >
-      <v-card-title class="text-h6 text-center">
+      <v-card-title class="text-h6 text-center text">
         <v-icon class="me-2">mdi-account-plus</v-icon>
         Register
       </v-card-title>
@@ -104,18 +104,22 @@
           <v-radio-group
             v-model="gender"
             label="Gender"
+            color="button"
           >
             <v-radio
               label="Male"
               value="male"
+              class="text"
             ></v-radio>
             <v-radio
               label="Female"
               value="female"
+              class="text"
             ></v-radio>
             <v-radio
               label="Other"
               value="other"
+              class="text"
             ></v-radio>
           </v-radio-group>
         </v-form>
@@ -124,7 +128,8 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-          color="primary"
+          color="button"
+          variant="outlined"
           @click="submitForm"
           :disabled="!valid"
         >
@@ -135,4 +140,8 @@
   </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .text {
+    color: #2d3e50;
+  }
+</style>

@@ -33,7 +33,7 @@
 
     <v-tabs
       v-if="!isAuthUser"
-      color="primary"
+      color="text"
       align="center"
     >
       <v-tab
@@ -48,7 +48,7 @@
         value="Login"
         @click.prevent="onSelect('Login')"
       >
-        <v-icon class="me-2">mdi-login</v-icon>
+        <v-icon class="me-2">mdi-login-variant</v-icon>
         Login
       </v-tab>
 

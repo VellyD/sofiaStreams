@@ -38,13 +38,8 @@
     style="height: 100vh"
   >
     <v-card style="width: 400px">
-      <v-card-title class="text-h6 text-center">
-        <v-icon
-          class="me-2"
-          color="text"
-        >
-          mdi-login
-        </v-icon>
+      <v-card-title class="text-h6 text-center text">
+        <v-icon class="me-2">mdi-login-variant</v-icon>
         Login
       </v-card-title>
       <v-card-text>
@@ -74,15 +69,20 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-          color="text"
+          color="button"
+          variant="outlined"
           @click="submitForm"
           :disabled="!valid"
         >
-          Login
+          Submit
         </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .text {
+    color: #2d3e50;
+  }
+</style>
