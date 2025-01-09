@@ -45,11 +45,19 @@
       </v-tab>
 
       <v-tab
-        value="Login/Register"
-        @click.prevent="onSelect('Login/Register')"
+        value="Login"
+        @click.prevent="onSelect('Login')"
       >
-        <v-icon class="me-2">mdi-account</v-icon>
-        Login/Register
+        <v-icon class="me-2">mdi-login</v-icon>
+        Login
+      </v-tab>
+
+      <v-tab
+        value="Register"
+        @click.prevent="onSelect('Register')"
+      >
+        <v-icon class="me-2">mdi-account-plus</v-icon>
+        Register
       </v-tab>
 
       <v-tab

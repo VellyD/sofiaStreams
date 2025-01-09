@@ -2,9 +2,11 @@
   import Header from "./components/Header.vue";
   import Footer from "./components/Footer.vue";
   import Contacts from "./pages/Contacts.vue";
+  import Login from "./pages/Login.vue";
+  import Register from "./pages/Register.vue";
 
   export default {
-    components: { Footer, Header, Contacts },
+    components: { Footer, Header, Contacts, Login, Register },
     data() {
       return {
         view: "Home",
