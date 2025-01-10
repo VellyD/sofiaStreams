@@ -1,15 +1,16 @@
 <script>
-  import Header from "./components/Header.vue";
-  import Footer from "./components/Footer.vue";
-  import Contacts from "./pages/Contacts.vue";
-  import Login from "./pages/Login.vue";
-  import Register from "./pages/Register.vue";
+  import Header from './components/Header.vue';
+  import Footer from './components/Footer.vue';
+  import Contacts from './pages/Contacts.vue';
+  import Login from './pages/Login.vue';
+  import Register from './pages/Register.vue';
+  import Home from './pages/Home/Home.vue';
 
   export default {
-    components: { Footer, Header, Contacts, Login, Register },
+    components: { Footer, Header, Contacts, Login, Register, Home },
     data() {
       return {
-        view: "Home",
+        view: 'Home',
       };
     },
     methods: {
