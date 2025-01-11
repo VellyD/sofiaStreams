@@ -1,15 +1,15 @@
 <script>
-  export default {
-    data() {
-      return {
-        icons: [
-          { name: "mdi-web", url: "https://stolichnah2o.com/" },
-          { name: "mdi-twitter", url: "" },
-          { name: "mdi-instagram", url: "" },
-        ],
-      };
-    },
-  };
+export default {
+  data() {
+    return {
+      icons: [
+        { name: 'mdi-web', url: 'https://stolichnah2o.com/' },
+        { name: 'mdi-twitter', url: '' },
+        { name: 'mdi-instagram', url: '' },
+      ],
+    };
+  },
+};
 </script>
 
 <template>
@@ -34,12 +34,7 @@
     <v-divider></v-divider>
 
     <div class="text">
-      <v-icon
-        size="24"
-        class="mb-2"
-      >
-        mdi-fountain
-      </v-icon>
+      <v-icon size="24" class="mb-2"> mdi-fountain </v-icon>
       <v-divider></v-divider>
       <strong>The Fountains of Sofia</strong>
     </div>
@@ -47,7 +42,7 @@
 </template>
 
 <style scoped>
-  .text {
-    color: #2d3e50;
-  }
+.text {
+  color: #2d3e50;
+}
 </style>
