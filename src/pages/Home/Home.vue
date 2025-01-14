@@ -1,17 +1,17 @@
 <script>
+  import { getAllRecipes } from "@/data/recipes";
   import Card from "./components/Card.vue";
+  // import Search from "./components/Search.vue";
+
   export default {
     components: { Card },
     data() {
       return {
-        fountains: [],
+        recipes: [],
       };
     },
     async mounted() {
-      const url = "https://dummyjson.com/c/d340-42b2-42a9-99d7";
-      const request = await fetch(url).then((res) => res.json());
-      console.log(request);
-      this.fountains = request;
+      this.recipes = await getAllRecipes();
     },
   };
 </script>
@@ -19,9 +19,9 @@
 <template>
   <div class="card-container">
     <Card
-      v-for="fountain in fountains"
-      :key="fountain.id"
-      :source="fountain"
+      v-for="recipe in recipes"
+      :key="recipe.id"
+      :source="recipe"
     />
   </div>
 </template>

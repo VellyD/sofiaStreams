@@ -1,23 +1,23 @@
 // Styles
-import '@mdi/font/css/materialdesignicons.css';
-import 'vuetify/styles';
+import "@mdi/font/css/materialdesignicons.css";
+import "vuetify/styles";
 
 // Composables
-import { createVuetify } from 'vuetify';
+import { createVuetify } from "vuetify";
 
 const customLightTheme = {
   dark: false,
   colors: {
-    primary: '#4A90E2', // Calm water blue for buttons and accents
-    secondary: '#50BFE6', // Vibrant cyan for highlights
-    accent: '#92E1D6', // Soft aqua for complementary elements
-    success: '#76C7C0', // Muted teal for positive actions
-    warning: '#FFC857', // Warm yellow for warnings
-    error: '#E57373', // Light red for errors
-    background: '#EAF6FA', // Light, calming blue for backgrounds
-    surface: '#D8F1F9', // Slightly darker surface for contrast
-    text: '#2D3E50', // Dark navy for readable text
-    button: '#7393b3',
+    primary: "#E8A874", // Vibrant peach for primary buttons and accents
+    secondary: "#F4C57C", // Rich golden beige for highlights
+    accent: "#D9A773", // Warm sandy brown for complementary elements
+    success: "#9BBF68", // Fresh olive green for positive actions
+    warning: "#F4A236", // Bold golden yellow for warnings
+    error: "#D87D74", // Deep coral for errors
+    background: "#FFF8EF", // Warm creamy beige for the background
+    surface: "#F4D1AF", // Richer warm beige for surfaces
+    text: "#4A3222", // Dark chocolate brown for high contrast and readability
+    button: "#E5977B", // Bold salmon for buttons
   },
   variables: {
     // variables
@@ -26,7 +26,7 @@ const customLightTheme = {
 
 export default createVuetify({
   theme: {
-    defaultTheme: 'customLightTheme',
+    defaultTheme: "customLightTheme",
     themes: {
       customLightTheme,
     },
