@@ -1,46 +1,60 @@
 <script>
-export default {
-  data() {
-    return {
-      username: '',
-      email: '',
-      password: '',
-      valid: false,
-      rules: {
-        required: (value) => !!value || 'This field is required!',
-        email: (value) => {
-          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return pattern.test(value) || 'Invalid email address!';
+  export default {
+    data() {
+      return {
+        username: "",
+        email: "",
+        password: "",
+        valid: false,
+        rules: {
+          required: (value) => !!value || "This field is required!",
+          email: (value) => {
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(value) || "Invalid email address!";
+          },
+          min: (length) => (value) =>
+            (value && value.length >= length) ||
+            `Minimum ${length} characters required!`,
         },
-        min: (length) => (value) =>
-          (value && value.length >= length) ||
-          `Minimum ${length} characters required!`,
-      },
-    };
-  },
-  methods: {
-    submitForm() {
-      if (this.$refs.loginForm.validate()) {
-        console.log('Form submitted:', {
-          username: this.username,
-          email: this.email,
-          password: this.password,
-        });
-      }
+      };
     },
-  },
-};
+    methods: {
+      submitForm() {
+        if (this.$refs.loginForm.validate()) {
+          console.log("Form submitted:", {
+            username: this.username,
+            email: this.email,
+            password: this.password,
+          });
+        }
+      },
+    },
+  };
 </script>
 
 <template>
-  <v-container class="d-flex justify-center align-center" style="height: 100vh">
-    <v-card style="width: 400px">
+  <v-container
+    class="d-flex justify-center align-center"
+    style="height: 100vh"
+  >
+    <v-card
+      style="width: 400px; border: 2px solid #e8a874; border-radius: 8px"
+      color="background"
+    >
       <v-card-title class="text-h6 text-center text">
-        <v-icon class="me-2">mdi-login-variant</v-icon>
+        <v-icon
+          class="me-2"
+          color="primary"
+        >
+          mdi-login-variant
+        </v-icon>
         Login
       </v-card-title>
       <v-card-text>
-        <v-form ref="loginForm" v-model="valid">
+        <v-form
+          ref="loginForm"
+          v-model="valid"
+        >
           <v-text-field
             v-model="email"
             label="Email"
@@ -76,7 +90,7 @@ export default {
 </template>
 
 <style scoped>
-.text {
-  color: #2d3e50;
-}
+  .text {
+    color: #e8a874;
+  }
 </style>

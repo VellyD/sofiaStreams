@@ -1,15 +1,15 @@
 <script>
-export default {
-  data() {
-    return {
-      icons: [
-        { name: 'mdi-web', url: 'https://stolichnah2o.com/' },
-        { name: 'mdi-twitter', url: '' },
-        { name: 'mdi-instagram', url: '' },
-      ],
-    };
-  },
-};
+  export default {
+    data() {
+      return {
+        icons: [
+          { name: "mdi-web", url: "" },
+          { name: "mdi-twitter", url: "" },
+          { name: "mdi-instagram", url: "" },
+        ],
+      };
+    },
+  };
 </script>
 
 <template>
@@ -29,20 +29,23 @@ export default {
       ></v-btn>
     </div>
 
-    <p class="pt-0 text">Stop drinking plastic water!</p>
-
     <v-divider></v-divider>
 
     <div class="text">
-      <v-icon size="24" class="mb-2"> mdi-fountain </v-icon>
-      <v-divider></v-divider>
-      <strong>The Fountains of Sofia</strong>
+      <v-icon
+        size="24"
+        class="mb-2"
+      >
+        mdi-chef-hat
+      </v-icon>
+
+      <strong>Yum Yum</strong>
     </div>
   </v-footer>
 </template>
 
 <style scoped>
-.text {
-  color: #2d3e50;
-}
+  .text {
+    color: #2d3e50;
+  }
 </style>

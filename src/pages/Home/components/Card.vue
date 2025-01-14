@@ -16,10 +16,11 @@
   <v-card
     class="card"
     width="300"
+    color="background"
   >
     <v-img
       height="200px"
-      :src="source.img"
+      :src="source.image"
       cover
       class="relative-container"
     >
@@ -45,23 +46,24 @@
     <v-card-title class="text-wrap">{{ source.name }}</v-card-title>
 
     <v-card-subtitle>
-      <a
-        :href="`https://www.google.com/maps?q=${source.lang},${source.long}`"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="location"
-      >
-        <v-icon color="primary">mdi-map-marker</v-icon>
-        Location
-      </a>
+      <v-icon color="primary">mdi-message-star-outline</v-icon>
+      {{ source.rating }}
     </v-card-subtitle>
 
     <v-card-actions>
       <v-btn
+        color="accent"
+        :text="source.cuisine"
+      ></v-btn>
+      <v-btn
         :color="
-          source.isFunctional === 'true' ? 'green-lighten-2' : 'red-lighten-2'
+          source.difficulty === 'Easy'
+            ? 'green-lighten-2'
+            : source.difficulty === 'Medium'
+              ? 'orange-lighten-2'
+              : 'red-lighten-2'
         "
-        :text="source.type"
+        :text="source.difficulty"
       ></v-btn>
 
       <v-spacer></v-spacer>
@@ -77,7 +79,16 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          {{ source.details }}
+          Shopping list includes:
+          <v-list>
+            <v-list-item
+              v-for="(ingredient, index) in source.ingredients"
+              :key="index"
+              prepend-icon="mdi-check"
+            >
+              {{ ingredient }}
+            </v-list-item>
+          </v-list>
         </v-card-text>
       </div>
     </v-expand-transition>
