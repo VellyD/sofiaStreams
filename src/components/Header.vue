@@ -1,10 +1,9 @@
 <script>
+  import { useUserStore } from "@/store/userStore";
+  import { mapState } from "pinia";
   export default {
-    props: {
-      isAuthUser: {
-        type: Boolean,
-        required: true,
-      },
+    computed: {
+      ...mapState(useUserStore, ["isAuthenticated", "profile"]),
     },
   };
 </script>
@@ -22,11 +21,14 @@
       >
         mdi-chef-hat
       </v-icon>
-      Yum Yum recipes
+      Yum Yum Recipes
+      <i class="personal">
+        {{ isAuthenticated ? `(for you ${profile.firstName})` : "" }}
+      </i>
     </v-app-bar-title>
 
     <v-tabs
-      v-if="!isAuthUser"
+      v-if="!isAuthenticated"
       color="text"
       align="center"
     >
@@ -86,4 +88,9 @@
   </v-app-bar>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .personal {
+    font-family: "Dancing Script", cursive;
+    font-size: 14px;
+  }
+</style>
