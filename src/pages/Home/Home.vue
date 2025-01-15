@@ -1,5 +1,5 @@
 <script>
-  import { getAllRecipes } from "@/data/recipes";
+  import { getAllRecipes } from "@/services/recipes";
   import Card from "./components/Card.vue";
   // import Search from "./components/Search.vue";
 
