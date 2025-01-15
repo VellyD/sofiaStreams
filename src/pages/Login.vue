@@ -1,32 +1,45 @@
 <script>
+  import { logInUser } from "@/services/auth";
+  import { useUserStore } from "@/store/userStore";
+  import { mapActions } from "pinia";
+
   export default {
     data() {
       return {
-        username: "",
         email: "",
         password: "",
         valid: false,
         rules: {
           required: (value) => !!value || "This field is required!",
+          // Add email validation
           email: (value) => {
-            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const pattern = /^[a-zA-Z][a-zA-Z0-9_.]{2,19}(?<![._])$/;
             return pattern.test(value) || "Invalid email address!";
           },
           min: (length) => (value) =>
             (value && value.length >= length) ||
             `Minimum ${length} characters required!`,
         },
+        isLoading: false,
       };
     },
     methods: {
-      submitForm() {
+      ...mapActions(useUserStore, ["setProfile"]),
+      async submitForm() {
+        this.isLoading = true;
         if (this.$refs.loginForm.validate()) {
-          console.log("Form submitted:", {
-            username: this.username,
-            email: this.email,
+          let user = await logInUser({
+            username: this.email,
             password: this.password,
           });
+          if (user) {
+            this.setProfile(user);
+            this.$router.push("/profile");
+          }
         }
+        // emilys
+        // emilyspass
+        this.isLoading = false;
       },
     },
   };
@@ -40,6 +53,7 @@
     <v-card
       style="width: 400px; border: 2px solid #e8a874; border-radius: 8px"
       color="background"
+      :loading="isLoading"
     >
       <v-card-title class="text-h6 text-center text">
         <v-icon
@@ -61,6 +75,7 @@
             :rules="[rules.required, rules.email]"
             outlined
             required
+            :disabled="isLoading"
           ></v-text-field>
 
           <v-text-field
@@ -70,6 +85,7 @@
             :rules="[rules.required, rules.min(6)]"
             outlined
             required
+            :disabled="isLoading"
           ></v-text-field>
         </v-form>
       </v-card-text>
@@ -80,7 +96,7 @@
           color="button"
           variant="outlined"
           @click="submitForm"
-          :disabled="!valid"
+          :disabled="!valid || isLoading"
         >
           Submit
         </v-btn>
