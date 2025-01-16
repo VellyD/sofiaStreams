@@ -46,6 +46,6 @@
 
 <style scoped>
   .text {
-    color: #2d3e50;
+    color: #4a3222;
   }
 </style>
