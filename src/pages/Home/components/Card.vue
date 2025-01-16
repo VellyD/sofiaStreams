@@ -1,4 +1,7 @@
 <script>
+  import { useUserStore } from "@/store/userStore";
+  import { mapActions, mapState } from "pinia";
+
   export default {
     props: {
       source: {
@@ -6,9 +9,31 @@
         required: true,
       },
     },
-    data: () => ({
-      show: false,
-    }),
+    data() {
+      return {
+        expanded: false,
+      };
+    },
+    computed: {
+      ...mapState(useUserStore, ["favoritesIDs", "isAuthenticated"]),
+      isFavorite() {
+        return this.favoritesIDs.includes(this.source.id);
+      },
+    },
+    methods: {
+      ...mapActions(useUserStore, ["addFavorite", "removeFavorite"]),
+
+      handleFavorite(id) {
+        if (this.isAuthenticated && !this.favoritesIDs.includes(id)) {
+          this.addFavorite(id);
+        } else if (this.isAuthenticated) {
+          this.removeFavorite(id);
+        }
+      },
+      toggleExpand() {
+        this.expanded = !this.expanded;
+      },
+    },
   };
 </script>
 
@@ -36,9 +61,10 @@
       <div class="relative-container">
         <v-icon
           class="favorite-btn"
-          :color="source.isFavorite === 'true' ? 'red' : 'primary'"
+          :color="isFavorite === 'true' ? 'red' : 'primary'"
+          @click="handleFavorite(source.id)"
         >
-          {{ source.isFavorite ? "mdi-heart" : "mdi-heart-outline" }}
+          {{ isFavorite ? "mdi-heart" : "mdi-heart-outline" }}
         </v-icon>
       </div>
     </v-img>
@@ -51,11 +77,11 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn
+      <v-chip
         color="accent"
         :text="source.cuisine"
-      ></v-btn>
-      <v-btn
+      ></v-chip>
+      <v-chip
         :color="
           source.difficulty === 'Easy'
             ? 'green-lighten-2'
@@ -64,18 +90,18 @@
               : 'red-lighten-2'
         "
         :text="source.difficulty"
-      ></v-btn>
+      ></v-chip>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="show = !show"
+        :icon="expanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+        @click="toggleExpand"
       ></v-btn>
     </v-card-actions>
 
     <v-expand-transition>
-      <div v-show="show">
+      <div v-if="expanded">
         <v-divider></v-divider>
 
         <v-card-text>
