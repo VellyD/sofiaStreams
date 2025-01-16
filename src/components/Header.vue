@@ -1,9 +1,12 @@
 <script>
   import { useUserStore } from "@/store/userStore";
-  import { mapState } from "pinia";
+  import { mapActions, mapState } from "pinia";
   export default {
     computed: {
       ...mapState(useUserStore, ["isAuthenticated", "profile"]),
+    },
+    methods: {
+      ...mapActions(useUserStore, ["logout"]),
     },
   };
 </script>
@@ -48,13 +51,13 @@
         Login
       </v-tab>
 
-      <v-tab
+      <!-- <v-tab
         value="Register"
         to="/register"
       >
         <v-icon class="me-2">mdi-account-plus</v-icon>
         Register
-      </v-tab>
+      </v-tab> -->
     </v-tabs>
     <v-tabs
       v-else
@@ -83,6 +86,15 @@
       >
         <v-icon class="me-2">mdi-account-cog</v-icon>
         Profile
+      </v-tab>
+
+      <v-tab
+        value="Logout"
+        to="/"
+        @click="logout"
+      >
+        <v-icon class="me-2">mdi-logout</v-icon>
+        Logout
       </v-tab>
     </v-tabs>
   </v-app-bar>
