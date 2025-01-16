@@ -37,8 +37,7 @@
             this.$router.push("/profile");
           }
         }
-        // emilys
-        // emilyspass
+
         this.isLoading = false;
       },
     },
@@ -91,6 +90,15 @@
       </v-card-text>
 
       <v-card-actions>
+        <router-link
+          class="registerlink"
+          to="/register"
+        >
+          New to YUM YUM?
+          <br />
+          Register here!
+        </router-link>
+
         <v-spacer></v-spacer>
         <v-btn
           color="button"
@@ -108,5 +116,11 @@
 <style scoped>
   .text {
     color: #e8a874;
+  }
+  .registerlink {
+    font-size: 12px;
+    text-decoration: none;
+    color: #e8a874;
+    margin-left: 10px;
   }
 </style>
