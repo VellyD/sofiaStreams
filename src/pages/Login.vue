@@ -6,21 +6,22 @@
   export default {
     data() {
       return {
-        email: "",
+        userName: "",
         password: "",
         valid: false,
         rules: {
           required: (value) => !!value || "This field is required!",
-          // Add email validation
-          email: (value) => {
+          userName: (value) => {
             const pattern = /^[a-zA-Z][a-zA-Z0-9_.]{2,19}(?<![._])$/;
-            return pattern.test(value) || "Invalid email address!";
+            return pattern.test(value) || "Invalid username!";
           },
           min: (length) => (value) =>
             (value && value.length >= length) ||
             `Minimum ${length} characters required!`,
         },
         isLoading: false,
+        isError: false,
+        errorMessageText: "",
       };
     },
     methods: {
@@ -28,13 +29,20 @@
       async submitForm() {
         this.isLoading = true;
         if (this.$refs.loginForm.validate()) {
-          let user = await logInUser({
-            username: this.email,
+          let res = await logInUser({
+            username: this.userName,
             password: this.password,
           });
-          if (user) {
-            this.setProfile(user);
+
+          if (res.status === 200) {
+            this.setProfile(res.data);
             this.$router.push("/profile");
+          } else {
+            this.errorMessageText = res.response.data.message;
+            this.isError = true;
+            setTimeout(() => {
+              this.isError = false;
+            }, 5000);
           }
         }
 
@@ -45,8 +53,23 @@
 </script>
 
 <template>
+  <v-alert
+    v-if="isError"
+    class="alert"
+    border="top"
+    type="error"
+    variant="outlined"
+    position="absolute"
+    elevation="2"
+    rounded="true"
+    width="400px"
+  >
+    {{ errorMessageText }}
+  </v-alert>
+
   <v-container
     class="d-flex justify-center align-center"
+    color="primary"
     style="height: 100vh"
   >
     <v-card
@@ -69,9 +92,9 @@
           v-model="valid"
         >
           <v-text-field
-            v-model="email"
-            label="Email"
-            :rules="[rules.required, rules.email]"
+            v-model="userName"
+            label="Username"
+            :rules="[rules.required, rules.userName]"
             outlined
             required
             :disabled="isLoading"
@@ -122,5 +145,10 @@
     text-decoration: none;
     color: #e8a874;
     margin-left: 10px;
+  }
+  .alert {
+    top: 80px;
+    right: 5px;
+    z-index: 1000;
   }
 </style>
