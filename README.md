@@ -12,7 +12,7 @@
 
 ### Private Functionality
 - **Save Favorites**: Logged-in users can save their favorite recipes for quick access.
-- **User Profile**: View and manage personal profile information.
+- **User Profile**: View personal profile information.
 
 ---
 
@@ -23,6 +23,8 @@
 - **State Management**: Pinia
 - **Routing**: Vue Router
 - **Code Styling**: ESLint and Prettier
+- **DB/BackEnd**: [DummyJSON](https://dummyjson.com/)
+
 
 ---
 
@@ -70,7 +72,11 @@ src/
 ```
 
 ---
+## Testing
+Since the register is only for showcasing the form and rules, you can use default DummyJSON users for login.
 
+## Deploy URL
+[Live under Github Pages](https://vellyd.github.io/yumyum/)
 ## Contact
 
 For questions or feedback, please reach out to [VellyD].
