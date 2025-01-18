@@ -1,6 +1,7 @@
 <script>
   import { useUserStore } from "@/store/userStore";
   import { mapActions, mapState } from "pinia";
+  import CardDetails from "@/components/CardDetails.vue";
 
   export default {
     props: {
@@ -10,9 +11,7 @@
       },
     },
     data() {
-      return {
-        expanded: false,
-      };
+      return { isRecipeDetails: false };
     },
     computed: {
       ...mapState(useUserStore, ["favoritesIDs", "isAuthenticated"]),
@@ -30,8 +29,8 @@
           this.removeFavorite(id);
         }
       },
-      toggleExpand() {
-        this.expanded = !this.expanded;
+      onDetailsClose() {
+        this.isRecipeDetails = false;
       },
     },
   };
@@ -94,31 +93,22 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        :icon="expanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="toggleExpand"
-      ></v-btn>
+      <v-btn @click="isRecipeDetails = true">
+        <v-icon
+          color="primary"
+          size="x-large"
+        >
+          mdi-dots-horizontal-circle-outline
+        </v-icon>
+      </v-btn>
     </v-card-actions>
-
-    <v-expand-transition>
-      <div v-if="expanded">
-        <v-divider></v-divider>
-
-        <v-card-text>
-          Shopping list includes:
-          <v-list>
-            <v-list-item
-              v-for="(ingredient, index) in source.ingredients"
-              :key="index"
-              prepend-icon="mdi-check"
-            >
-              {{ ingredient }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-      </div>
-    </v-expand-transition>
   </v-card>
+
+  <CardDetails
+    :source="source"
+    :isRecipeDetails="isRecipeDetails"
+    @on-close="onDetailsClose"
+  />
 </template>
 
 <style scoped>
