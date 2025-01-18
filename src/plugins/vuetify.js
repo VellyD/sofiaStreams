@@ -19,9 +19,6 @@ const customLightTheme = {
     text: "#4A3222", // Dark chocolate brown for high contrast and readability
     button: "#E5977B", // Bold salmon for buttons
   },
-  variables: {
-    // variables
-  },
 };
 
 export default createVuetify({

@@ -16,7 +16,7 @@
 
 <template>
   <v-app>
-    <Header :is-auth-user="false" />
+    <Header />
     <v-main>
       <router-view />
     </v-main>
