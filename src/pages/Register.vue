@@ -35,7 +35,6 @@
       },
       submitForm() {
         if (this.$refs.registerForm.validate()) {
-          // Handle form submission here (e.g., send data to server)
           console.log("Form submitted:", {
             firstName: this.firstName,
             lastName: this.lastName,

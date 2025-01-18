@@ -8,3 +8,12 @@ export async function getAllRecipes() {
     console.error(e);
   }
 }
+
+// export async function getAllTags() {
+//   try {
+//     const res = await axios.get("https://dummyjson.com/recipes/tags");
+//     return res.data;
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }
