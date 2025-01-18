@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "/yumyum/",
+  publicPath: process.env.NODE_ENV === "production" ? "/yumyum/" : "/",
 };
